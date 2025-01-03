@@ -9,6 +9,8 @@ namespace LeaveManagementSystem.Web.MappingProfiles
         public AutoMapperProfile() 
         {
             CreateMap<LeaveType, IndexVM>();
+            CreateMap<LeaveTypeCreateVM, LeaveType>();
+            CreateMap<LeaveType, LeaveTypeEditVM>().ReverseMap(); //Maps both directions
         }
     }
 }
