@@ -2,7 +2,7 @@
 
 namespace LeaveManagementSystem.Web.Models.LeaveTypes
 {
-    public class IndexVM : BaseLeaveTypeVM
+    public class LeaveTypeReadOnlyVM : BaseLeaveTypeVM
     {
         public string Name { get; set; }
         [Display(Name = "Number of Days")]
