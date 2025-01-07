@@ -1,6 +1,7 @@
 using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -14,7 +15,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //Adding the service contract to the container
 builder.Services.AddScoped<ILeaveTypesService, LeaveTypesService>();
-
+//add email service
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 //Add AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

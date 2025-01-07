@@ -42,7 +42,7 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            @foreach (var role in Model.Input.RoleNames) //adding form fields for selecting a role
+            @foreach (var role in Model.RoleNames) //adding form fields for selecting a role
             {
                 <div class=" = form-check">
                     <input class=" = form-check-input" type="radio" asp-for="Input.RoleName" value="@role"/>
@@ -51,6 +51,7 @@
                     </label>
                 </div>
             }
+            <span asp-validation-for="Input.RoleName" class="text-danger"></span>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
