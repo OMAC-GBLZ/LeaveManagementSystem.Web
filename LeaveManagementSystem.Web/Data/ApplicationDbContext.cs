@@ -67,6 +67,10 @@ namespace LeaveManagementSystem.Web.Data
             // PM> add-migration SeedingDefaultRolesAndUser
         }
 
+        //letting dbcontext know about our data classes
         public DbSet<LeaveType> LeaveTypes { get; set; }
+        public DbSet<LeaveAllocation> leaveAllocations { get; set; }
+        public DbSet<Period> Periods { get; set; }
+
     }
 }
