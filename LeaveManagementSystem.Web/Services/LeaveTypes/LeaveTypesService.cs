@@ -3,7 +3,8 @@ using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Models.LeaveTypes;
 using Microsoft.EntityFrameworkCore;
 
-namespace LeaveManagementSystem.Web.Services
+
+namespace LeaveManagementSystem.Web.Services.LeaveTypes
 {
     public class LeaveTypesService(ApplicationDbContext _context, IMapper _mapper) : ILeaveTypesService
     {
@@ -29,7 +30,7 @@ namespace LeaveManagementSystem.Web.Services
 
         public async Task Remove(int id)
         {
-            var data = (_context.LeaveTypes.FirstOrDefaultAsync(x => x.Id == id));
+            var data = _context.LeaveTypes.FirstOrDefaultAsync(x => x.Id == id);
             if (data != null)
             {
                 _context.Remove(data);

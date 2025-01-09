@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Net.Mail;
 
-namespace LeaveManagementSystem.Web.Services
+namespace LeaveManagementSystem.Web.Services.Email
 {
-    public class EmailSender(IConfiguration _configuration): IEmailSender
+    public class EmailSender(IConfiguration _configuration) : IEmailSender
     {
-       public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var fromAddress = _configuration["EmailSettings:DefaultEmailAddress"];
             var smtpServer = _configuration["EmailSettings:Server"];

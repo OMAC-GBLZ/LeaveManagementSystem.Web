@@ -46,6 +46,7 @@ namespace LeaveManagementSystem.Web.Data
                     Email = "admin@localhost.com",
                     NormalizedEmail = "ADMIN@LOCALHOST.COM",
                     NormalizedUserName = "ADMIN@LOCALHOST.COM",
+                    UserName = "admin@localhost.com",
                     PasswordHash = hasher.HashPassword(null, "P@ssword1"),
                     EmailConfirmed = true,
                     FirstName = "Default",
@@ -69,7 +70,7 @@ namespace LeaveManagementSystem.Web.Data
 
         //letting dbcontext know about our data classes
         public DbSet<LeaveType> LeaveTypes { get; set; }
-        public DbSet<LeaveAllocation> leaveAllocations { get; set; }
+        public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
         public DbSet<Period> Periods { get; set; }
 
     }
