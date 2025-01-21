@@ -1,0 +1,37 @@
+﻿@model EmployeeAllocationVM //if this doesnt show remember to add the using statement in the viewimports file
+
+@{
+    ViewData["Title"] = "View Allocations";
+}
+
+<h1>View Allocations for @Model.FirstName @Model.LastName</h1>
+
+<hr/>
+<div>
+<dl class="row">
+    <dt class ="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.FirstName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.FirstName)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.LastName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.LastName)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.Email)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.Email)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.DateOfBirth)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(Model => Model.DateOfBirth)
+    </dd>
+</dl>
+</div>

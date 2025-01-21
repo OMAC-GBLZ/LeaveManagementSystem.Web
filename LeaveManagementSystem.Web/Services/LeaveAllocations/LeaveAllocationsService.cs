@@ -1,10 +1,12 @@
 ﻿
+using AutoMapper;
+using LeaveManagementSystem.Web.Models.LeaveAllocations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagementSystem.Web.Services.LeaveAllocations
 {
-    public class LeaveAllocationsService(ApplicationDbContext _context, IHttpContextAccessor _httpContextAccessor, UserManager<ApplicationUser> _userManager) : ILeaveAllocationsService
+    public class LeaveAllocationsService(ApplicationDbContext _context, IHttpContextAccessor _httpContextAccessor, UserManager<ApplicationUser> _userManager, IMapper _mapper) : ILeaveAllocationsService
     {
         public async Task AllocateLeave(string employeeId)
         {
@@ -40,7 +42,7 @@ namespace LeaveManagementSystem.Web.Services.LeaveAllocations
            
             var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext?.User);
             var leaveAllocations = await _context.LeaveAllocations
-                .Include(q => q.LeaveType) // Include simulates join statement in SQL
+                .Include(q => q.LeaveType) // Include simulates inner join statement in SQL
                 .Include(q => q.Period)
                 .Where(q => q.EmployeeId == user.Id)
                 .ToListAsync();
@@ -48,6 +50,24 @@ namespace LeaveManagementSystem.Web.Services.LeaveAllocations
             return leaveAllocations;
         }
 
+        public async Task<EmployeeAllocationVM> GetEmployeeAllocation()
+        {
+            var allocations = await GetAllocations();
+            var allocationVmList = _mapper.Map<List<LeaveAllocation>, List<LeaveAllocationVM>>(allocations);
+            
+            var user = await _userManager.GetUserAsync(_httpContextAccessor?.HttpContext?.User);
+            var employeeVm = new EmployeeAllocationVM
+            {
+                DateOfBirth = user.DateOfBirth,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = user.Id,
+                LeaveAllocations = allocationVmList,
+            };
+
+            return employeeVm;
+        }
 
     }
 }

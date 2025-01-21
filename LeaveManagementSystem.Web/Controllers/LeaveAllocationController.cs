@@ -10,8 +10,8 @@ namespace LeaveManagementSystem.Web.Controllers
         public async Task<IActionResult> Index()
         {
             
-            var leaveAllocations = await _leaveAllocationsService.GetAllocations();
-            return View();
+            var employeeVm = await _leaveAllocationsService.GetEmployeeAllocation();
+            return View(employeeVm);
         }
     }
 }
